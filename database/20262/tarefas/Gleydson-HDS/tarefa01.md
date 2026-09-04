@@ -28,3 +28,8 @@
 
 - d) Consistência, pois garante que o banco de dados permaneça de acordo com suas regras e restrições.
 ---
+**QUESTÃO 05 - Um SGBD trata dos seguintes aspectos: recuperação, integridade, redundância e inconsistência. Explique cada um deles e descreva como o SGBD os gerencia.**  
+- Recuperação: permite recuperar os dados após falhas, usando backup e registros do sistema.
+- Integridade: garante que os dados estejam corretos e válidos, usando regras e restrições.
+- Redundância: evita a repetição desnecessária dos mesmos dados, economizando espaço.
+- Inconsistência: evita que existam dados diferentes ou conflitantes. O SGBD controla as alterações para manter os dados corretos e iguais quando necessário.
