@@ -48,13 +48,13 @@
     Release: versão do projeto que será entregue.  
 
 - b) Atributos  
-    Cliente: código, nome, CNPJ, contato.  
-    Projeto: código, nome, descrição, status.  
-    Squad: código, nome.  
-    Membro: código, nome, e-mail, cargo.  
-    Tarefa: código, título, descrição, prioridade, status.  
-    Sprint: código, nome, data inicial, data final.  
-    Release: código, versão, data de entrega, status.  
+    Cliente: código_cliente, nome, CNPJ, contato.  
+    Projeto: código_projeto, nome, descrição, status.  
+    Squad: código_squad, nome.  
+    Membro: código_membro, nome, e-mail, cargo.  
+    Tarefa: código_tarefa, título, descrição, prioridade, status.  
+    Sprint: código_sprint, nome, data inicial, data final.  
+    Release: código_release, versão, data de entrega, status.  
 
 - c) Relacionamentos e cardinalidades  
     Um cliente pode ter vários projetos, mas cada projeto pertence a um cliente.  
