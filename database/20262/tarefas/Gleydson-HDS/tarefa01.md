@@ -13,9 +13,18 @@
 
 - Atomicidade: Transações são executadas totalmente ou desfeitas, como um conjunto. Em uma transferência bancária o valor debitado da conta de origem deve ser creditado na conta destino, ocorrendo a transferência de uma para a outra. Se essa propriedade não fosse garantida, o dinheiro poderia ser retirado da primeira conta sem chegar à segunda.
   
-- Consistência: Mudança para um estado válido, íntegro, após a realização de uma transição. Após uma transferência, ambos os saldos da conta de origem e de destino devem ser atualizados. Se duas transferências forem realizadas ao mesmo tempo, o SGBD deve garantir que cada operação seja processada corretamente sem interferir na outra. Sem essa propriedade, os saldos poderiam ficar incorretos.
+- Consistência: Mudança para um estado válido, íntegro, após a realização de uma transição. Após uma transferência, ambos os saldos da conta de origem e de destino devem ser atualizados. Sem essa propriedade, os saldos poderiam ficar incorretos.
 
 - Isolamento: Transações são tratadas de forma independente, de forma que não haja conflitos por concorrência. Se duas transferências forem realizadas ao mesmo tempo, o SGBD deve garantir que cada operação seja processada corretamente sem interferir na outra. Sem isolamento, uma transferência poderia utilizar um saldo desatualizado e causar erros.
 
 - Durabilidade: Transações que já persistiram na base não serão desfeitas por erros futuros. Depois que uma transferência for confirmada, ela deve continuar registrada no banco de dados mesmo após uma falha ou queda de energia. Sem essa propriedade, a transferência poderia ser perdida mesmo tendo sido confirmada.
+---
+**QUESTÃO 04 - Para cada cenário abaixo, indique qual(is) propriedade(s) ACID está(ão) em jogo e justifique sua resposta: a) Queda de energia no meio de uma transferência deixou o valor debitado da conta de origem, mas não creditado na conta de destino. b) Dois atendentes debitam, ao mesmo tempo, o mesmo saldo de uma conta. c) O sistema confirma a operação, mas após reiniciar o servidor o dado foi perdido. d) Uma transferência que levaria o saldo abaixo do limite permitido é rejeitada pelo banco.**  
+- a) Atomicidade, pois devido a queda de energia a transição ficou incompleta, a atomicidade garante que o débito seja desfeito nesse caso.  
+
+- b) Isolamento, pois representa o controle para que transações simultâneas não interfiram entre si.
+  
+- c) Durabilidade, pois é necessário que os dados sejam armazenados em caso de interrupção na operação.  
+
+- d) Consistência, pois garante que o banco de dados permaneça de acordo com suas regras e restrições.
 ---
