@@ -33,3 +33,47 @@
 - Integridade: garante que os dados estejam corretos e válidos, usando regras e restrições.
 - Redundância: evita a repetição desnecessária dos mesmos dados, economizando espaço.
 - Inconsistência: evita que existam dados diferentes ou conflitantes. O SGBD controla as alterações para manter os dados corretos e iguais quando necessário.
+---
+**QUESTÃO 06 - Considere o cenário de uma empresa de desenvolvimento de software que atende outras empresas como clientes. A empresa organiza seu trabalho em squads (equipes) compostas por desenvolvedores, testadores, líder técnico, supervisor e gerente de produto. Cada squad resolve tarefas (issues) e planeja releases, testes e o cronograma de sprints (iterações) dos projetos de cada cliente.**
+
+**Sem utilizar SQL, elabore um mini-projeto conceitual do banco de dados dessa empresa, deixando claro: a) As principais entidades envolvidas (clientes, squads, membros, tarefas, projetos, sprints, releases). b) Os principais atributos de cada entidade. c) Os relacionamentos entre as entidades (com a cardinalidade, ex.: "um cliente pode ter vários projetos"). d) Em linguagem natural, as regras de integridade (restrições) que o banco de dados deveria garantir, ex.: "apenas um líder por squad", "toda tarefa precisa estar vinculada a um projeto".**  
+
+- a) Entidades  
+    Cliente: empresa que contrata o serviço.  
+    Projeto: projeto desenvolvido para um cliente.  
+    Squad: equipe responsável pelo projeto.  
+    Membro: pessoa que trabalha em uma squad.  
+    Tarefa (Issue): atividade que precisa ser realizada.  
+    Sprint: período de trabalho da equipe.  
+    Release: versão do projeto que será entregue.  
+
+- b) Atributos  
+    Cliente: código, nome, CNPJ, contato.  
+    Projeto: código, nome, descrição, status.  
+    Squad: código, nome.  
+    Membro: código, nome, e-mail, cargo.  
+    Tarefa: código, título, descrição, prioridade, status.  
+    Sprint: código, nome, data inicial, data final.  
+    Release: código, versão, data de entrega, status.  
+
+- c) Relacionamentos e cardinalidades  
+    Um cliente pode ter vários projetos, mas cada projeto pertence a um cliente.  
+    Um projeto pode ter uma ou mais squads, e uma squad pode trabalhar em vários projetos.  
+    Uma squad possui vários membros, e um membro pertence a uma squad.  
+    Um projeto possui várias tarefas, e cada tarefa pertence a um projeto.  
+    Uma sprint possui várias tarefas, e uma tarefa pode participar de uma sprint.  
+    Um projeto possui várias releases, e cada release pertence a um projeto.  
+    Uma squad planeja várias sprints e releases.  
+
+- d) Regras de integridade  
+    Todo projeto deve estar vinculado a um cliente.  
+    Toda tarefa deve estar vinculada a um projeto.  
+    Toda sprint deve ter uma data inicial anterior à data final.  
+    Uma squad deve ter pelo menos um desenvolvedor.  
+    Cada squad deve ter apenas um líder técnico.  
+    Um membro não pode pertencer a duas squads ao mesmo tempo.  
+    Toda release deve estar vinculada a um projeto.  
+    Os códigos de clientes, projetos, squads, membros, tarefas, sprints e releases devem ser únicos.  
+    Uma tarefa não pode ser concluída sem estar vinculada a uma sprint.  
+---
+
