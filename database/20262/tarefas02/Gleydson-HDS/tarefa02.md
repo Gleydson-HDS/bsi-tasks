@@ -63,13 +63,26 @@ erDiagram
 		Float estimativa_horas  ""  
 	}
 
-CLIENTE ||--|{ PROJETOS : "POSSUI"
-FUNCIONARIO |{--|| SQUAD : "É FORMADA POR"
-SQUAD ||--|{ TAREFA : "RESOLVE"
-PROJETOS ||--|{ TAREFA : "POSSUI"
-SQUAD ||--o{ SPRINTS : "PLANEJA"
-SPRINTS ||--|{ TAREFA : "ORGANIZA"
-SQUAD ||--o{ RELEASES : "PLANEJA"
-CLIENTE ||--o{ RELEASES : "RECEBE"
-RELEASES ||--|{ TAREFA : "AGRUPA"
- 
+  CLIENTE ||--|{ PROJETOS : "POSSUI"
+  FUNCIONARIO |{--|| SQUAD : "É FORMADA POR"
+  SQUAD ||--|{ TAREFA : "RESOLVE"
+  PROJETOS ||--|{ TAREFA : "POSSUI"
+  SQUAD ||--o{ SPRINTS : "PLANEJA"
+  SPRINTS ||--|{ TAREFA : "ORGANIZA"
+  SQUAD ||--o{ RELEASES : "PLANEJA"
+  CLIENTE ||--o{ RELEASES : "RECEBE"
+  RELEASES ||--|{ TAREFA : "AGRUPA"
+
+```
+---
+**Q4. A partir do Diagrama ER da questão anterior, faça o mapeamento para o Modelo Relacional: liste as relações (tabelas), com seus atributos, e identifique as chaves primárias e as chaves estrangeiras de cada relação.**  
+
+| Relação | Atributos | Chave Primária | Chaves Estrangeiras |
+|---|---|---|---|
+| **CLIENTE** | codigo_cliente, nome_cliente, email_cliente | `codigo_cliente` | — |
+| **FUNCIONARIO** | codigo_funcionario, nome_funcionario, email_funcionario, papel, codigo_squad | `codigo_funcionario` | `codigo_squad` → SQUAD |
+| **SQUAD** | codigo_squad, nome_squad | `codigo_squad` | — |
+| **SPRINTS** | codigo_sprint, nome_sprint, codigo_squad | `codigo_sprint` | `codigo_squad` → SQUAD |
+| **RELEASES** | codigo_releases, nome_releases, codigo_squad, codigo_cliente | `codigo_releases` | `codigo_squad` → SQUAD; `codigo_cliente` → CLIENTE |
+| **PROJETOS** | codigo_projeto, nome_projeto, codigo_cliente | `codigo_projeto` | `codigo_cliente` → CLIENTE |
+| **TAREFA** | codigo_tarefa, descricao, prioridade, situacao, estimativa_horas, codigo_squad, codigo_projeto, codigo_sprint, codigo_releases | `codigo_tarefa` | `codigo_squad` → SQUAD; `codigo_projeto` → PROJETOS; `codigo_sprint` → SPRINTS; `codigo_releases` → RELEASES |
