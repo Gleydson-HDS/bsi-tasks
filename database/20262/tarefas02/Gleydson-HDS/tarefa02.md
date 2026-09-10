@@ -86,3 +86,18 @@ erDiagram
 | **RELEASES** | codigo_releases, nome_releases, codigo_squad, codigo_cliente | `codigo_releases` | `codigo_squad` → SQUAD; `codigo_cliente` → CLIENTE |
 | **PROJETOS** | codigo_projeto, nome_projeto, codigo_cliente | `codigo_projeto` | `codigo_cliente` → CLIENTE |
 | **TAREFA** | codigo_tarefa, descricao, prioridade, situacao, estimativa_horas, codigo_squad, codigo_projeto, codigo_sprint, codigo_releases | `codigo_tarefa` | `codigo_squad` → SQUAD; `codigo_projeto` → PROJETOS; `codigo_sprint` → SPRINTS; `codigo_releases` → RELEASES |
+---
+**Q5. Descreva, em linguagem natural, as restrições de integridade referencial que devem ser garantidas no esquema projetado (ex.: "uma tarefa só pode existir vinculada a um projeto de cliente existente", "toda squad deve possuir um líder técnico").**  
+As seguintes restrições de integridade referencial devem ser garantidas no esquema relacional:
+
+1. Todo funcionário deve estar vinculado a uma squad existente. O codigo_squad de FUNCIONARIO deve corresponder a um codigo_squad existente em SQUAD.
+2. Todo projeto deve estar vinculado a um cliente existente. O codigo_cliente de PROJETOS deve corresponder a um codigo_cliente existente em CLIENTE.
+4. Toda sprint deve estar vinculada a uma squad existente. O codigo_squad de SPRINTS deve corresponder a um codigo_squad existente em SQUAD.
+5. Toda release deve estar vinculada a uma squad existente. O codigo_squad de RELEASES deve corresponder a um codigo_squad existente em SQUAD.
+6. Toda release deve estar vinculada a um cliente existente. O codigo_cliente de RELEASES deve corresponder a um codigo_cliente existente em CLIENTE.
+7. Toda tarefa deve estar vinculada a uma squad existente. O codigo_squad de TAREFA deve corresponder a um codigo_squad existente em SQUAD.
+8. Toda tarefa deve estar vinculada a um projeto existente. O codigo_projeto de TAREFA deve corresponder a um codigo_projeto existente em PROJETOS. Como cada projeto pertence a um cliente, a tarefa estará indiretamente associada a um cliente existente.
+9. Toda tarefa deve estar vinculada a uma sprint existente. O codigo_sprint de TAREFA deve corresponder a um codigo_sprint existente em SPRINTS.
+10. Toda tarefa deve estar vinculada a uma release existente. O codigo_releases de TAREFA deve corresponder a um codigo_releases existente em RELEASES.
+11. Não podem existir chaves estrangeiras com valores que não correspondam a registros existentes nas respectivas tabelas. Por exemplo, não pode existir uma TAREFA com codigo_projeto = 5 se não existir um PROJETOS com codigo_projeto = 5.
+
